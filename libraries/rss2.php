@@ -5,14 +5,14 @@
 * @author David Wischhusen
 */
 class Rss2{
-	var $channel;
+	public $channel;
 
 	/**
 	* Rss2 constructor
 	*
 	* @access public
 	*/
-	function Rss2(){
+	public function Rss2(){
 		$this->channel = NULL;
 	}
 
@@ -22,7 +22,7 @@ class Rss2{
 	* @access public
 	* @return Rss2_channel
 	*/
-	function new_channel(){
+	public function new_channel(){
 		return new Rss2_channel();
 	}
 
@@ -32,7 +32,7 @@ class Rss2{
 	* @access public
 	* @param Rss2_channel
 	*/
-	function pack($channel){
+	public function pack($channel){
 		$this->channel = $channel;
 	}
 
@@ -42,7 +42,7 @@ class Rss2{
 	* @access public
 	* @return string
 	*/
-	function headers(){
+	public function headers(){
 		return 'Content-Type: application/xml';
 	}
 
@@ -52,7 +52,7 @@ class Rss2{
 	* @access public
 	* @return string
 	*/
-	function render(){
+	public function render(){
 		$xml = array();
 		$xml[] = '<?xml version="1.0"?>';
 		$xml[] = '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">';
@@ -67,16 +67,16 @@ class Rss2{
 * Rss2_channel class
 */
 class Rss2_channel{
-	var $attributes;
-	var $items; //includes images
-	var $atom_link;
+	public $attributes;
+	public $items; //includes images
+	public $atom_link;
 
 	/**
 	* Rss2_channel constructor
 	*
 	* @access public
 	*/
-	function Rss2_channel(){
+	public function Rss2_channel(){
 		$this->attributes = array();
 		$this->items = array();
 		$this->atom_link = false;
@@ -88,7 +88,7 @@ class Rss2_channel{
 	* @access public
 	* @return Rss2_item
 	*/
-	function new_item(){
+	public function new_item(){
 		return new Rss2_item();
 	}
 
@@ -98,7 +98,7 @@ class Rss2_channel{
 	* @access public
 	* @return Rss2_image
 	*/
-	function new_image(){
+	public function new_image(){
 		return new Rss2_image();
 	}
 
@@ -108,7 +108,7 @@ class Rss2_channel{
 	* @access public
 	* @param mixed
 	*/
-	function add_item($item){
+	public function add_item($item){
 		$this->items[] = $item;
 	}
 
@@ -118,7 +118,7 @@ class Rss2_channel{
 	* @access public
 	* @param string
 	*/
-	function atom_link($href){
+	public function atom_link($href){
 		$this->atom_link = $href;
 	}
 
@@ -128,7 +128,7 @@ class Rss2_channel{
 	* @access public
 	* @param string
 	*/
-	function set_title($title){
+	public function set_title($title){
 		$this->_set_attribute('title', $title);
 	}
 
@@ -138,7 +138,7 @@ class Rss2_channel{
 	* @access public
 	* @param string
 	*/
-	function set_link($link){
+	public function set_link($link){
 		$this->_set_attribute('link', $link);
 	}
 
@@ -148,7 +148,7 @@ class Rss2_channel{
 	* @access public
 	* @param string
 	*/
-	function set_description($description){
+	public function set_description($description){
 		$this->_set_attribute('description', $description);
 	}
 
@@ -160,7 +160,7 @@ class Rss2_channel{
 	* @param string
 	* @param mixed
 	*/
-	function set_attribute($key, $value, $attributes=false){
+	public function set_attribute($key, $value, $attributes=false){
 		$this->_set_attribute($key, $value, $attributes);
 	}
 
@@ -186,7 +186,7 @@ class Rss2_channel{
 	* @access public
 	* @return string
 	*/
-	function render(){
+	public function render(){
 		$xml = array();
 		$xml[] = '<channel>';
 		//render channel elements
@@ -224,14 +224,14 @@ class Rss2_channel{
 * Rss2_item object
 */
 class Rss2_item{
-	var $attributes;
+	public $attributes;
 
 	/**
 	* Rss2_item constructor
 	*
 	* @access public
 	*/
-	function Rss2_item(){
+	public function Rss2_item(){
 		$this->attributes = array();
 	}
 
@@ -241,7 +241,7 @@ class Rss2_item{
 	* @access public
 	* @param string
 	*/
-	function set_title($title){
+	public function set_title($title){
 		$this->_set_attribute('title', $title);
 	}
 
@@ -251,7 +251,7 @@ class Rss2_item{
 	* @access public
 	* @param string
 	*/
-	function set_link($link){
+	public function set_link($link){
 		$this->_set_attribute('link', $link);
 	}
 
@@ -262,7 +262,7 @@ class Rss2_item{
 	* @param string
 	* @param bool
 	*/
-	function set_guid($guid, $is_permalink=false){
+	public function set_guid($guid, $is_permalink=false){
 		$attribute = false;
 		if(!$is_permalink){
 			$attribute = 'isPermaLink="false"';
@@ -276,7 +276,7 @@ class Rss2_item{
 	* @access public
 	* @param string
 	*/
-	function set_description($description){
+	public function set_description($description){
 		$this->_set_attribute('description', $description);
 	}
 
@@ -286,7 +286,7 @@ class Rss2_item{
 	* @access public
 	* @param string
 	*/
-	function set_author($author){
+	public function set_author($author){
 		$this->_set_attribute('author', $author);
 	}
 
@@ -298,7 +298,7 @@ class Rss2_item{
 	* @param string
 	* @param mixed
 	*/
-	function set_attribute($key, $value, $attributes=false){
+	public function set_attribute($key, $value, $attributes=false){
 		$this->_set_attribute($key, $value, $attributes);
 	}
 
@@ -324,7 +324,7 @@ class Rss2_item{
 	* @access public
 	* @return string
 	*/
-	function render(){
+	public function render(){
 		$xml = array();
 		$xml[] = '<item>';
 		foreach($this->attributes as $attribute){
@@ -353,14 +353,14 @@ class Rss2_item{
 * Rss2_image object
 */
 class Rss2_image{
-	var $attributes;
+	public $attributes;
 
 	/**
 	* Rss2_image constructor
 	*
 	* @access public
 	*/
-	function Rss2_image(){
+	public function Rss2_image(){
 		$this->attributes = array();
 	}
 
@@ -370,7 +370,7 @@ class Rss2_image{
 	* @access public
 	* @param string
 	*/
-	function set_url($url){
+	public function set_url($url){
 		$this->_set_attribute('url', $url);
 	}
 
@@ -380,7 +380,7 @@ class Rss2_image{
 	* @access public
 	* @param string
 	*/
-	function set_title($title){
+	public function set_title($title){
 		$this->_set_attribute('title', $title);
 	}
 
@@ -390,7 +390,7 @@ class Rss2_image{
 	* @access public
 	* @param string
 	*/
-	function set_link($link){
+	public function set_link($link){
 		$this->_set_attribute('link', $link);
 	}
 
@@ -400,7 +400,7 @@ class Rss2_image{
 	* @access public
 	* @param string
 	*/
-	function set_width($width){
+	public function set_width($width){
 		$this->_set_attribute('width', $width);
 	}
 
@@ -410,7 +410,7 @@ class Rss2_image{
 	* @access public
 	* @param string
 	*/
-	function set_height($height){
+	public function set_height($height){
 		$this->_set_attribute('height', $height);
 	}
 
@@ -434,7 +434,7 @@ class Rss2_image{
 	* @access public
 	* @return string
 	*/
-	function render(){
+	public function render(){
 		$xml = array();
 		$xml[] = '<image>';
 		foreach($this->attributes as $attribute){
