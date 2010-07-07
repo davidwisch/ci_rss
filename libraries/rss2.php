@@ -1,11 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
-* Rss2 class
+* CodeIgniter library for creating RSS feeds.
 *
-* @author David Wischhusen
+* @author David Wischhusen <davewisch@gmail.com>
+*/
+
+/**
+* Rss2 class
 */
 class Rss2{
+
 	public $channel;
 
 	/**
