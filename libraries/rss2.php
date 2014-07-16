@@ -348,16 +348,16 @@ class Rss2_item{
 			if($attribute->value==false) {
 				$str .= '/>';
 			} else {
-			$str .= '>';
-			$str .= '<![CDATA[ '.nl2br($attribute->value).']]>';
-			$str .= '</'.$attribute->key.'>';
+				$str .= '>';
+				$str .= '<![CDATA[ '.nl2br($attribute->value).']]>';
+				$str .= '</'.$attribute->key.'>';
 			}
 			$xml [] = $str;
 		}
 		$xml[] = '</item>';
 		return implode($xml);
 	}
-}
+
 }
 
 /**
