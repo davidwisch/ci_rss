@@ -345,14 +345,19 @@ class Rss2_item{
 					$str .= ' '.$attribute->attributes;
 				}
 			}
+			if($attribute->value==false) {
+				$str .= '/>';
+			} else {
 			$str .= '>';
 			$str .= '<![CDATA[ '.nl2br($attribute->value).']]>';
 			$str .= '</'.$attribute->key.'>';
+			}
 			$xml [] = $str;
 		}
 		$xml[] = '</item>';
 		return implode($xml);
 	}
+}
 }
 
 /**
